@@ -1,4 +1,4 @@
-# Python-generated files
 __pycache__/
-
+.env
+app_builder/
 

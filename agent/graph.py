@@ -2,14 +2,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
-
-#from pathlib import Path
-
-# Load .env from project root
-#env_path = Path(__file__).resolve().parent.parent / ".env"
-#load_dotenv(dotenv_path=env_path)
-
 from agent.states import *
 from agent.prompts import *
 from agent.tools import *
@@ -18,13 +10,10 @@ from langgraph.constants import END
 from langgraph.graph import StateGraph
 from langgraph.prebuilt import create_react_agent
 
-#ChatGroq(model="openai/gpt_oss-120b")
+# (specify your model name here)
+
 llm=ChatGroq(model="llama-3.3-70b-versatile")
-
-
-# user_prompt= "Create a simple calculator web applicaton"
-
-#prompt= planner_prompt(user_prompt)
+#ChatGroq(model="openai/gpt_oss-120b")
 
 def planner_agent(state:dict)->dict:
     user_prompt=state["user_prompt"]
@@ -70,11 +59,6 @@ def coder_agent(state:dict)->dict:
     coder_state.current_step_idx+=1
     return{"coder_state":coder_state}
 
-#state={
-#    "user_prompt":user_prompt,
-#    "plan":"",
-#}
-#print(resp)
 
 
 graph= StateGraph(dict)
